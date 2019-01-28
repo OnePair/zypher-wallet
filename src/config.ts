@@ -11,7 +11,7 @@ const API_PORT = "api_port";
 const ETH_RPC_HOST = "eth_rpc_host";
 const IPFS_HOST = "ipfs_host";
 
-const DEFAULT_API_PORT = 3000;
+const DEFAULT_API_PORT = 7777;
 const DEFAULT_ETH_RPC_HOST = "http://localhost:8545";
 const DEFAULT_IPFS_HOST = "/ip4/127.0.0.1/tcp/5001";
 

@@ -12,11 +12,15 @@
   "dependencies": {
     "@types/express": "^4.16.0",
     "@types/node": "^10.12.18",
+    "and": "0.0.3",
     "authid-core-ts": "file:../authid-core-ts",
     "authid-eth-driver": "file:../authid-eth-driver-ts",
     "body-parser": "^1.18.3",
+    "build": "^0.1.4",
     "express": "^4.16.4",
     "mkdirp": "^0.5.1",
+    "npm": "^6.7.0",
+    "run": "^1.4.0",
     "typescript": "^3.2.4"
   },
   "devDependecies": {
