@@ -167,7 +167,7 @@ export class AuthIDEdgeAgent {
           await this.authID.importDID(password, did);
 
           result = { protocol: protocol.toUpperCase() };
-          responseCode = 201; // created
+          responseCode = 200;
         }
 
         onSuccess({ result: result, responseCode: responseCode });
