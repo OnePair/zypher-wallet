@@ -56,6 +56,25 @@ export class WalletController {
       }
     });
 
+    this.router.post("/getPublicKeys", async (req: Request, res: Response) => {
+      try {
+        if (!("protocol" in req.body) || !("password" in req.body)) {
+          res.status(400);
+          res.send({ reason: "Invalid parameters" });
+        } else {
+          let response =
+            await this.authIDAgent.getPublicKeys(req.body["protocol"],
+              req.body["password"]);
+
+          res.status(response["responseCode"]);
+          res.send(response["result"]);
+        }
+      } catch (err) {
+        res.status(500);
+        res.send({ err: err.toString() });
+      }
+    });
+
     this.router.post("/getSeedPhrase", async (req: Request, res: Response) => {
       try {
         if (!("password" in req.body) || !("protocol" in req.body)) {

@@ -74,6 +74,29 @@ export class AuthIDEdgeAgent {
     });
   }
 
+  public getPublicKeys(protocol: string, password: string): Promise<object> {
+    return new Promise(async (onSuccess: Function, onError: Function) => {
+      try {
+        let result: object;
+        let responseCode: number;
+
+        if (!AuthIDEdgeAgent.isProtocolSupported(protocol)) {
+          result = { reason: "Unsupported protocol." };
+          responseCode = 400; // Bad request
+        } else {
+          let publicKeys = await this.authID.getPublicKeys(protocol, password);
+
+          result = { publicKeys: publicKeys, protocol: protocol.toUpperCase() }
+          responseCode = 200;
+        }
+
+        onSuccess({ result: result, responseCode: responseCode });
+      } catch (err) {
+        onError(err);
+      }
+    });
+  };
+
   public getSeedPhrase(protocol: string, password: string): Promise<object> {
     return new Promise(async (onSuccess: Function, onError: Function) => {
       try {
