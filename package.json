@@ -2,10 +2,11 @@
   "name": "zypher-wallet",
   "version": "0.0.1",
   "description": "",
-  "main": "app.js",
+  "main": "./build/app.js",
+  "bin": "./build/cli.js",
   "scripts": {
     "build": "tsc",
-    "start": "node ./build/app.js"
+    "start": "node ./build/cli.js start"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "authid-eth-driver": "file:../authid-eth-driver-ts",
     "body-parser": "^1.18.3",
     "build": "^0.1.4",
+    "commander": "^2.19.0",
     "express": "^4.16.4",
     "mkdirp": "^0.5.1",
     "npm": "^6.7.0",

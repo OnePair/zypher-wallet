@@ -3,8 +3,17 @@ import { ApiServer } from "./api";
 import { AuthIDEdgeAgent } from "./authid-edge-agent";
 
 
-async function startApiServer() {
+export async function startApiServer(port: number, ethHost: string,
+  ipfsHost: string) {
+
   const config = new Config();
+
+  if (port != undefined)
+    config.setApiPort(port);
+  if (ethHost != undefined)
+    config.setEthRPCHost(ethHost);
+  if (ipfsHost != undefined)
+    config.setIpfsHost(ipfsHost);
 
   let authIDEdgeAgent = new AuthIDEdgeAgent(config);
   await authIDEdgeAgent.init();
@@ -13,7 +22,3 @@ async function startApiServer() {
   apiServer.init();
   apiServer.start();
 }
-
-startApiServer();
-
-// Electron app

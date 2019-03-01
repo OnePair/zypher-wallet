@@ -27,12 +27,29 @@ export class Config {
     return this.config[API_PORT];
   }
 
+  public setApiPort(port: number): void {
+    this.config[API_PORT] = port;
+  }
+
   public getEthRPCHost(): string {
     return this.config[ETH_RPC_HOST];
   }
 
+  public setEthRPCHost(host: string): void {
+    this.config[ETH_RPC_HOST] = host;
+  }
+
   public getIpfsHost(): string {
     return this.config[IPFS_HOST];
+  }
+
+  public setIpfsHost(host: string): void {
+    this.config[IPFS_HOST] = host;
+  }
+
+  public save(): void {
+    let configJson = JSON.stringify(this.config);
+    fs.writeFileSync(CONFIG_PATH, configJson);
   }
 
   private initEnv(): void {
@@ -46,11 +63,6 @@ export class Config {
       let jsonConfig = fs.readFileSync(CONFIG_PATH).toString();
       this.config = JSON.parse(jsonConfig);
     }
-  }
-
-  private save(): void {
-    let configJson = JSON.stringify(this.config);
-    fs.writeFileSync(CONFIG_PATH, configJson);
   }
 
   private getDefaultConfig(): object {
