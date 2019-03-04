@@ -1,7 +1,7 @@
 import { Config, APP_DIR } from "./config";
 import { AuthID, AuthIDDriver } from "authid-core-ts";
 import { EthAuthIDDriver } from "authid-eth-driver";
-import { JsonRpcProvider } from "authid-eth-driver/node_modules/ethers/providers";
+import { JsonRpcProvider } from "ethers/providers";
 
 import path from "path";
 
