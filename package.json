@@ -25,6 +25,10 @@
     "run": "^1.4.0",
     "typescript": "^3.3.3333"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OnePair/zypher-wallet.git"
+  },
   "devDependecies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
