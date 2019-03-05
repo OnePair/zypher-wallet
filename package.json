@@ -2,11 +2,11 @@
   "name": "zypher-wallet",
   "version": "0.0.1",
   "description": "",
-  "main": "./build/app.js",
-  "bin": "./build/cli.js",
+  "main": "./dist/app.js",
+  "bin": "./dist/cli.js",
   "scripts": {
     "build": "tsc",
-    "start": "node ./build/cli.js start"
+    "start": "node ./dist/cli.js start"
   },
   "author": "",
   "license": "ISC",
