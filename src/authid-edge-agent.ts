@@ -175,6 +175,29 @@ export class AuthIDEdgeAgent {
     });
   }
 
+  public registerName(protocol: string, password: string, name: string): Promise<object> {
+    return new Promise<object>(async (onSuccess: Function, onError: Function) => {
+      try {
+        let result: object;
+        let responseCode: number;
+
+        if (!AuthIDEdgeAgent.isProtocolSupported(protocol)) {
+          result = { reason: "Unsupported protocol." };
+          responseCode = 400; // Bad request
+        } else {
+          let txHash = await this.authID.registerName(protocol, password, name);
+
+          result = { txHash: txHash, protocol: protocol.toUpperCase() };
+          responseCode = 201; // created
+        }
+        onSuccess({ result: result, responseCode: responseCode });
+
+      } catch (err) {
+        onError(err);
+      }
+    });
+  }
+
   public importDID(password: string, did: string): Promise<object> {
     return new Promise(async (onSuccess: Function, onError: Function) => {
       try {
@@ -326,7 +349,8 @@ export class AuthIDEdgeAgent {
     return new Promise(async (onSuccess: Function, onError: Function) => {
       try {
         let provider: any = new JsonRpcProvider(this.config.getEthRPCHost());
-        let ethDriver = new EthAuthIDDriver(path.join(APP_DIR, "eth"), provider, "");
+        let ethDriver = new EthAuthIDDriver(path.join(APP_DIR, "eth"),
+          provider, this.config.getIpfsHost(), this.config.getEthNetwork());
         await ethDriver.init();
 
         onSuccess(ethDriver);

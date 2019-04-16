@@ -263,10 +263,42 @@ var AuthIDEdgeAgent = /** @class */ (function () {
             });
         }); });
     };
+    AuthIDEdgeAgent.prototype.registerName = function (protocol, password, name) {
+        var _this = this;
+        return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
+            var result, responseCode, txHash, err_7;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 4, , 5]);
+                        result = void 0;
+                        responseCode = void 0;
+                        if (!!AuthIDEdgeAgent.isProtocolSupported(protocol)) return [3 /*break*/, 1];
+                        result = { reason: "Unsupported protocol." };
+                        responseCode = 400; // Bad request
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, this.authID.registerName(protocol, password, name)];
+                    case 2:
+                        txHash = _a.sent();
+                        result = { txHash: txHash, protocol: protocol.toUpperCase() };
+                        responseCode = 201; // created
+                        _a.label = 3;
+                    case 3:
+                        onSuccess({ result: result, responseCode: responseCode });
+                        return [3 /*break*/, 5];
+                    case 4:
+                        err_7 = _a.sent();
+                        onError(err_7);
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        }); });
+    };
     AuthIDEdgeAgent.prototype.importDID = function (password, did) {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var result, responseCode, protocol, err_7;
+            var result, responseCode, protocol, err_8;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -288,8 +320,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess({ result: result, responseCode: responseCode });
                         return [3 /*break*/, 5];
                     case 4:
-                        err_7 = _a.sent();
-                        onError(err_7);
+                        err_8 = _a.sent();
+                        onError(err_8);
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -299,7 +331,7 @@ var AuthIDEdgeAgent = /** @class */ (function () {
     AuthIDEdgeAgent.prototype.authorizeProcessor = function (protocol, password, processorId, publicKey, sig, auth) {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var result, responseCode, processor, err_8;
+            var result, responseCode, processor, err_9;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -320,8 +352,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess({ result: result, responseCode: responseCode });
                         return [3 /*break*/, 5];
                     case 4:
-                        err_8 = _a.sent();
-                        onError(err_8);
+                        err_9 = _a.sent();
+                        onError(err_9);
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -331,7 +363,7 @@ var AuthIDEdgeAgent = /** @class */ (function () {
     AuthIDEdgeAgent.prototype.importProcessor = function (protocol, password, processorId, processorToken, privateKey) {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var result, responseCode, processor, err_9;
+            var result, responseCode, processor, err_10;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -352,8 +384,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess({ result: result, responseCode: responseCode });
                         return [3 /*break*/, 5];
                     case 4:
-                        err_9 = _a.sent();
-                        onError(err_9);
+                        err_10 = _a.sent();
+                        onError(err_10);
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -363,7 +395,7 @@ var AuthIDEdgeAgent = /** @class */ (function () {
     AuthIDEdgeAgent.prototype.revokeProcessor = function (protocol, password, processorId) {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var result, responseCode, err_10;
+            var result, responseCode, err_11;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -384,8 +416,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess({ result: result, responseCode: responseCode });
                         return [3 /*break*/, 5];
                     case 4:
-                        err_10 = _a.sent();
-                        onError(err_10);
+                        err_11 = _a.sent();
+                        onError(err_11);
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -395,7 +427,7 @@ var AuthIDEdgeAgent = /** @class */ (function () {
     AuthIDEdgeAgent.prototype.createJwt = function (protocol, password, claims, expiresIn) {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var result, responseCode, jwt, err_11;
+            var result, responseCode, jwt, err_12;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -416,8 +448,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess({ result: result, responseCode: responseCode });
                         return [3 /*break*/, 5];
                     case 4:
-                        err_11 = _a.sent();
-                        onError(err_11);
+                        err_12 = _a.sent();
+                        onError(err_12);
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -427,7 +459,7 @@ var AuthIDEdgeAgent = /** @class */ (function () {
     AuthIDEdgeAgent.prototype.verifyJwt = function (jwt, id) {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var result, responseCode, err_12;
+            var result, responseCode, err_13;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -439,8 +471,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess({ result: result, responseCode: responseCode });
                         return [3 /*break*/, 3];
                     case 2:
-                        err_12 = _a.sent();
-                        onError(err_12);
+                        err_13 = _a.sent();
+                        onError(err_13);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -450,7 +482,7 @@ var AuthIDEdgeAgent = /** @class */ (function () {
     AuthIDEdgeAgent.prototype.init = function () {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var ethDriver, err_13;
+            var ethDriver, err_14;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -462,8 +494,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess();
                         return [3 /*break*/, 3];
                     case 2:
-                        err_13 = _a.sent();
-                        onError(err_13);
+                        err_14 = _a.sent();
+                        onError(err_14);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -473,21 +505,21 @@ var AuthIDEdgeAgent = /** @class */ (function () {
     AuthIDEdgeAgent.prototype.loadEthDriver = function () {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var provider, ethDriver, err_14;
+            var provider, ethDriver, err_15;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         provider = new providers_1.JsonRpcProvider(this.config.getEthRPCHost());
-                        ethDriver = new authid_eth_driver_1.EthAuthIDDriver(path_1.default.join(config_1.APP_DIR, "eth"), provider, "");
+                        ethDriver = new authid_eth_driver_1.EthAuthIDDriver(path_1.default.join(config_1.APP_DIR, "eth"), provider, this.config.getIpfsHost(), this.config.getEthNetwork());
                         return [4 /*yield*/, ethDriver.init()];
                     case 1:
                         _a.sent();
                         onSuccess(ethDriver);
                         return [3 /*break*/, 3];
                     case 2:
-                        err_14 = _a.sent();
-                        onError(err_14);
+                        err_15 = _a.sent();
+                        onError(err_15);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }

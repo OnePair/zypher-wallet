@@ -73,8 +73,35 @@ var AuthIDAgentController = /** @class */ (function () {
                 }
             });
         }); });
-        this.router.post("/importDID", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+        this.router.post("/registerName", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
             var response, err_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 4, , 5]);
+                        if (!(!("password" in req.body) || !("protocol" in req.body)
+                            || !("name" in req.body))) return [3 /*break*/, 1];
+                        res.status(400);
+                        res.send({ reason: "Invalid parameters" });
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, this.authIDAgent.registerName(req.body["protocol"], req.body["password"], req.body["name"])];
+                    case 2:
+                        response = _a.sent();
+                        res.status(response["responseCode"]);
+                        res.send(response["result"]);
+                        _a.label = 3;
+                    case 3: return [3 /*break*/, 5];
+                    case 4:
+                        err_2 = _a.sent();
+                        res.status(500);
+                        res.send({ err: err_2.toString() });
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        }); });
+        this.router.post("/importDID", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var response, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -91,16 +118,16 @@ var AuthIDAgentController = /** @class */ (function () {
                         _a.label = 3;
                     case 3: return [3 /*break*/, 5];
                     case 4:
-                        err_2 = _a.sent();
+                        err_3 = _a.sent();
                         res.status(500);
-                        res.send({ err: err_2.toString() });
+                        res.send({ err: err_3.toString() });
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
             });
         }); });
         this.router.post("/authorizeProcessor", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var response, err_3;
+            var response, err_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -119,16 +146,16 @@ var AuthIDAgentController = /** @class */ (function () {
                         _a.label = 3;
                     case 3: return [3 /*break*/, 5];
                     case 4:
-                        err_3 = _a.sent();
+                        err_4 = _a.sent();
                         res.status(500);
-                        res.send({ err: err_3.toString() });
+                        res.send({ err: err_4.toString() });
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
             });
         }); });
         this.router.post("/importProcessor", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var response, err_4;
+            var response, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -147,16 +174,16 @@ var AuthIDAgentController = /** @class */ (function () {
                         _a.label = 3;
                     case 3: return [3 /*break*/, 5];
                     case 4:
-                        err_4 = _a.sent();
+                        err_5 = _a.sent();
                         res.status(500);
-                        res.send({ err: err_4.toString() });
+                        res.send({ err: err_5.toString() });
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
             });
         }); });
         this.router.post("/revokeProcessor", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var response, err_5;
+            var response, err_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -174,16 +201,16 @@ var AuthIDAgentController = /** @class */ (function () {
                         _a.label = 3;
                     case 3: return [3 /*break*/, 5];
                     case 4:
-                        err_5 = _a.sent();
+                        err_6 = _a.sent();
                         res.status(500);
-                        res.send({ err: err_5.toString() });
+                        res.send({ err: err_6.toString() });
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
             });
         }); });
         this.router.post("/createJwt", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var response, err_6;
+            var response, err_7;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -201,16 +228,16 @@ var AuthIDAgentController = /** @class */ (function () {
                         _a.label = 3;
                     case 3: return [3 /*break*/, 5];
                     case 4:
-                        err_6 = _a.sent();
+                        err_7 = _a.sent();
                         res.status(500);
-                        res.send({ err: err_6.toString() });
+                        res.send({ err: err_7.toString() });
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
             });
         }); });
         this.router.post("/verifyJwt", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var response, err_7;
+            var response, err_8;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -227,9 +254,9 @@ var AuthIDAgentController = /** @class */ (function () {
                         _a.label = 3;
                     case 3: return [3 /*break*/, 5];
                     case 4:
-                        err_7 = _a.sent();
+                        err_8 = _a.sent();
                         res.status(500);
-                        res.send({ err: err_7 });
+                        res.send({ err: err_8 });
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }

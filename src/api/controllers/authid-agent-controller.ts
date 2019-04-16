@@ -34,6 +34,25 @@ export class AuthIDAgentController {
       }
     });
 
+    this.router.post("/registerName", async (req: Request, res: Response) => {
+      try {
+        if (!("password" in req.body) || !("protocol" in req.body)
+          || !("name" in req.body)) {
+          res.status(400);
+          res.send({ reason: "Invalid parameters" });
+        } else {
+          let response = await this.authIDAgent.registerName(req.body["protocol"],
+            req.body["password"], req.body["name"]);
+
+          res.status(response["responseCode"]);
+          res.send(response["result"]);
+        }
+      } catch (err) {
+        res.status(500);
+        res.send({ err: err.toString() });
+      }
+    });
+
     this.router.post("/importDID", async (req: Request, res: Response) => {
       try {
         if (!("password" in req.body) || !("did" in req.body)) {

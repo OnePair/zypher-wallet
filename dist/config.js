@@ -10,9 +10,11 @@ var mkdirp_1 = __importDefault(require("mkdirp"));
 exports.APP_DIR = path_1.default.join(os_1.homedir(), ".zypher-wallet");
 var CONFIG_PATH = path_1.default.join(exports.APP_DIR, "config.json");
 var API_PORT = "api_port";
+var ETH_NETWORK = "eth_network";
 var ETH_RPC_HOST = "eth_rpc_host";
 var IPFS_HOST = "ipfs_host";
 var DEFAULT_API_PORT = 7777;
+var DEFAULT_ETH_NETWORK = "rospten";
 var DEFAULT_ETH_RPC_HOST = "http://localhost:8545";
 var DEFAULT_IPFS_HOST = "/ip4/127.0.0.1/tcp/5001";
 var Config = /** @class */ (function () {
@@ -24,6 +26,12 @@ var Config = /** @class */ (function () {
     };
     Config.prototype.setApiPort = function (port) {
         this.config[API_PORT] = port;
+    };
+    Config.prototype.getEthNetwork = function () {
+        return this.config[ETH_NETWORK];
+    };
+    Config.prototype.setEthNetwork = function (network) {
+        this.config[ETH_NETWORK] = network;
     };
     Config.prototype.getEthRPCHost = function () {
         return this.config[ETH_RPC_HOST];
@@ -58,6 +66,7 @@ var Config = /** @class */ (function () {
         var _a;
         return _a = {},
             _a[API_PORT] = DEFAULT_API_PORT,
+            _a[ETH_NETWORK] = DEFAULT_ETH_NETWORK,
             _a[ETH_RPC_HOST] = DEFAULT_ETH_RPC_HOST,
             _a[IPFS_HOST] = DEFAULT_IPFS_HOST,
             _a;

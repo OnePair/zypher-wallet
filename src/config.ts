@@ -8,10 +8,12 @@ export const APP_DIR = path.join(homedir(), ".zypher-wallet");
 const CONFIG_PATH = path.join(APP_DIR, "config.json");
 
 const API_PORT = "api_port";
+const ETH_NETWORK = "eth_network";
 const ETH_RPC_HOST = "eth_rpc_host";
 const IPFS_HOST = "ipfs_host";
 
 const DEFAULT_API_PORT = 7777;
+const DEFAULT_ETH_NETWORK = "rospten"
 const DEFAULT_ETH_RPC_HOST = "http://localhost:8545";
 const DEFAULT_IPFS_HOST = "/ip4/127.0.0.1/tcp/5001";
 
@@ -29,6 +31,14 @@ export class Config {
 
   public setApiPort(port: number): void {
     this.config[API_PORT] = port;
+  }
+
+  public getEthNetwork(): string {
+    return this.config[ETH_NETWORK];
+  }
+
+  public setEthNetwork(network: string) {
+    this.config[ETH_NETWORK] = network;
   }
 
   public getEthRPCHost(): string {
@@ -68,6 +78,7 @@ export class Config {
   private getDefaultConfig(): object {
     return {
       [API_PORT]: DEFAULT_API_PORT,
+      [ETH_NETWORK]: DEFAULT_ETH_NETWORK,
       [ETH_RPC_HOST]: DEFAULT_ETH_RPC_HOST,
       [IPFS_HOST]: DEFAULT_IPFS_HOST
     };
