@@ -176,6 +176,63 @@ export class AuthIDAgentController {
         res.send({ err: err });
       }
     });
+
+    this.router.post("/createAuthRequest", async (req: Request, res: Response) => {
+      try {
+        if (!("id" in req.body)) {
+          res.status(400);
+          res.send({ reason: "Invalid parameters" });
+        } else {
+          let response = await this.authIDAgent.createAuthRequest(req.body["id"]);
+
+          res.status(response["responseCode"]);
+          res.send(response["result"]);
+        }
+
+      } catch (err) {
+        res.status(500);
+        res.send({ err: err.toString() });
+      }
+    });
+
+    this.router.post("/signAuthRequest", async (req: Request, res: Response) => {
+      try {
+        if (!("password" in req.body) || !("authRequest" in req.body)) {
+          res.status(400);
+          res.send({ reason: "Invalid parameters" });
+        } else {
+          let response =
+            await this.authIDAgent.signAuthRequest(req.body["password"],
+              req.body["authRequest"]);
+
+          res.status(response["responseCode"]);
+          res.send(response["result"]);
+        }
+
+      } catch (err) {
+        res.status(500);
+        res.send({ err: err.toString() });
+      }
+    });
+
+    this.router.post("/verifyAuthResponse", async (req: Request, res: Response) => {
+      try {
+        if (!("authResponse" in req.body)) {
+          res.status(400);
+          res.send({ reason: "Invalid parameters" });
+        } else {
+          let response =
+            await this.authIDAgent.verifyAuthResponse(req.body["authResponse"]);
+
+          res.status(response["responseCode"]);
+          res.send(response["result"]);
+        }
+
+      } catch (err) {
+        res.status(500);
+        res.send({ err: err.toString() });
+      }
+    });
   }
 
   public getRouter(): Router {

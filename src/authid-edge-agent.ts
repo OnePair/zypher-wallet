@@ -331,6 +331,49 @@ export class AuthIDEdgeAgent {
     });
   }
 
+  public createAuthRequest(id: string): Promise<object> {
+    return new Promise(async (onSuccess: Function, onError: Function) => {
+      try {
+        let authRequest = await this.authID.createAuthRequest(id);
+        let responseCode = 201;
+
+        let result = { authRequest: authRequest };
+
+        onSuccess({ result: result, responseCode: responseCode });
+      } catch (err) {
+        onError(err);
+      }
+    });
+  }
+
+  public signAuthRequest(password: string, authRequest: object): Promise<object> {
+    return new Promise(async (onSuccess: Function, onError: Function) => {
+      try {
+        let response = await this.authID.signAuthRequest(password, authRequest);
+        let responseCode = 201;
+
+        let result = { authResponse: response };
+
+        onSuccess({ result: result, responseCode: responseCode });
+      } catch (err) {
+        onError(err);
+      }
+    });
+  }
+
+  public verifyAuthResponse(authResponse: string): Promise<object> {
+    return new Promise(async (onSuccess: Function, onError: Function) => {
+      try {
+        let result = await this.authID.verifyAuthResponse(authResponse);
+        let responseCode = 200;
+
+        onSuccess({ result: result, responseCode: responseCode });
+      } catch (err) {
+        onError(err);
+      }
+    });
+  }
+
   public init(): Promise<void> {
     return new Promise(async (onSuccess: Function, onError: Function) => {
       try {

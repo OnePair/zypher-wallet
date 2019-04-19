@@ -262,6 +262,84 @@ var AuthIDAgentController = /** @class */ (function () {
                 }
             });
         }); });
+        this.router.post("/createAuthRequest", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var response, err_9;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 4, , 5]);
+                        if (!!("id" in req.body)) return [3 /*break*/, 1];
+                        res.status(400);
+                        res.send({ reason: "Invalid parameters" });
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, this.authIDAgent.createAuthRequest(req.body["id"])];
+                    case 2:
+                        response = _a.sent();
+                        res.status(response["responseCode"]);
+                        res.send(response["result"]);
+                        _a.label = 3;
+                    case 3: return [3 /*break*/, 5];
+                    case 4:
+                        err_9 = _a.sent();
+                        res.status(500);
+                        res.send({ err: err_9.toString() });
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        }); });
+        this.router.post("/signAuthRequest", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var response, err_10;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 4, , 5]);
+                        if (!(!("password" in req.body) || !("authRequest" in req.body))) return [3 /*break*/, 1];
+                        res.status(400);
+                        res.send({ reason: "Invalid parameters" });
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, this.authIDAgent.signAuthRequest(req.body["password"], req.body["authRequest"])];
+                    case 2:
+                        response = _a.sent();
+                        res.status(response["responseCode"]);
+                        res.send(response["result"]);
+                        _a.label = 3;
+                    case 3: return [3 /*break*/, 5];
+                    case 4:
+                        err_10 = _a.sent();
+                        res.status(500);
+                        res.send({ err: err_10.toString() });
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        }); });
+        this.router.post("/verifyAuthResponse", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var response, err_11;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 4, , 5]);
+                        if (!!("authResponse" in req.body)) return [3 /*break*/, 1];
+                        res.status(400);
+                        res.send({ reason: "Invalid parameters" });
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, this.authIDAgent.verifyAuthResponse(req.body["authResponse"])];
+                    case 2:
+                        response = _a.sent();
+                        res.status(response["responseCode"]);
+                        res.send(response["result"]);
+                        _a.label = 3;
+                    case 3: return [3 /*break*/, 5];
+                    case 4:
+                        err_11 = _a.sent();
+                        res.status(500);
+                        res.send({ err: err_11.toString() });
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        }); });
     };
     AuthIDAgentController.prototype.getRouter = function () {
         return this.router;

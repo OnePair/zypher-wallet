@@ -479,10 +479,81 @@ var AuthIDEdgeAgent = /** @class */ (function () {
             });
         }); });
     };
+    AuthIDEdgeAgent.prototype.createAuthRequest = function (id) {
+        var _this = this;
+        return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
+            var authRequest, responseCode, result, err_14;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.authID.createAuthRequest(id)];
+                    case 1:
+                        authRequest = _a.sent();
+                        responseCode = 201;
+                        result = { authRequest: authRequest };
+                        onSuccess({ result: result, responseCode: responseCode });
+                        return [3 /*break*/, 3];
+                    case 2:
+                        err_14 = _a.sent();
+                        onError(err_14);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    AuthIDEdgeAgent.prototype.signAuthRequest = function (password, authRequest) {
+        var _this = this;
+        return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
+            var response, responseCode, result, err_15;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.authID.signAuthRequest(password, authRequest)];
+                    case 1:
+                        response = _a.sent();
+                        responseCode = 201;
+                        result = { authResponse: response };
+                        onSuccess({ result: result, responseCode: responseCode });
+                        return [3 /*break*/, 3];
+                    case 2:
+                        err_15 = _a.sent();
+                        onError(err_15);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    AuthIDEdgeAgent.prototype.verifyAuthResponse = function (authResponse) {
+        var _this = this;
+        return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
+            var result, responseCode, err_16;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.authID.verifyAuthResponse(authResponse)];
+                    case 1:
+                        result = _a.sent();
+                        responseCode = 200;
+                        onSuccess({ result: result, responseCode: responseCode });
+                        return [3 /*break*/, 3];
+                    case 2:
+                        err_16 = _a.sent();
+                        onError(err_16);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); });
+    };
     AuthIDEdgeAgent.prototype.init = function () {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var ethDriver, err_14;
+            var ethDriver, err_17;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -494,8 +565,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess();
                         return [3 /*break*/, 3];
                     case 2:
-                        err_14 = _a.sent();
-                        onError(err_14);
+                        err_17 = _a.sent();
+                        onError(err_17);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -505,7 +576,7 @@ var AuthIDEdgeAgent = /** @class */ (function () {
     AuthIDEdgeAgent.prototype.loadEthDriver = function () {
         var _this = this;
         return new Promise(function (onSuccess, onError) { return __awaiter(_this, void 0, void 0, function () {
-            var provider, ethDriver, err_15;
+            var provider, ethDriver, err_18;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -518,8 +589,8 @@ var AuthIDEdgeAgent = /** @class */ (function () {
                         onSuccess(ethDriver);
                         return [3 /*break*/, 3];
                     case 2:
-                        err_15 = _a.sent();
-                        onError(err_15);
+                        err_18 = _a.sent();
+                        onError(err_18);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
