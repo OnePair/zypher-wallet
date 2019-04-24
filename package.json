@@ -17,7 +17,7 @@
     "@types/express": "^4.16.0",
     "@types/node": "^10.12.18",
     "and": "0.0.3",
-    "authid-core-ts": "git+https://github.com/OnePair/authid-core-ts.git#6e2619504b20515fa7950ccf3ebaf253ea8dfdd2",
+    "authid-core-ts": "git+https://github.com/OnePair/authid-core-ts.git#a8d9a98683a4a4c52038bf57dcf1456f3c58d625",
     "authid-eth-driver": "git+https://github.com/OnePair/authid-eth-driver-ts.git#aa6e1a70c7792e7f4ffc0953df9b6b9d65ffa0c6",
     "body-parser": "^1.18.3",
     "build": "^0.1.4",

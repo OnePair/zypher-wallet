@@ -363,6 +363,7 @@ export class AuthIDEdgeAgent {
 
   public verifyAuthResponse(authResponse: string): Promise<object> {
     return new Promise(async (onSuccess: Function, onError: Function) => {
+
       try {
         let result = await this.authID.verifyAuthResponse(authResponse);
         let responseCode = 200;
